@@ -5,7 +5,7 @@ loadkeys us
 timedatectl set-timezone America/Los_Angeles
 
 # partitions
-printf "g\nn\n\n\n+4G\nn\n\n\n+8G\nn\n\n\n\nt\n2\n19\nt\n3\n23\nt\n1\n1\nw\n" | fdisk /dev/sda
+echo -e "g\nn\n\n\n+4G\nn\n\n\n+8G\nn\n\n\n\nt\n2\n19\nt\n3\n23\nt\n1\n1\nw\n" | fdisk /dev/sda
 
 # formatting new partitions
 mkfs.ext4 /dev/sda3
@@ -18,7 +18,7 @@ mount --mkdir /dev/sda1 /mnt/boot/efi
 swapon /dev/sda2
 
 # installing needed packages
-pacstrap -i --noconfirm /mnt base
+pacstrap -i /mnt base
 
 # generating ftab
 genfstab -U -p /mnt >>/mnt/etc/fstab
