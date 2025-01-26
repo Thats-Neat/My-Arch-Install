@@ -52,7 +52,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # start networkmanager
 systemctl enable NetworkManager
 
-# creating new users
+# CREATE A NEW USER MANUALLY
 # passwd
 # useradd -m -g users -G wheel johnathon
 # passwd johnathon
