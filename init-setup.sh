@@ -9,7 +9,7 @@ echo -e "g\nn\n\n\n+4G\nn\n\n\n+8G\nn\n\n\n\nt\n2\n19\nt\n3\n23\nt\n1\n1\nw\n" |
 
 # formatting new partitions
 mkfs.ext4 /dev/sda3
-mkfs.ext4 /dev/sda1
+mkfs.fat -F32 /dev/sda1
 mkswap /dev/sda2
 
 # mounting new partitions
