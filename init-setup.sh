@@ -56,8 +56,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # start networkmanager
 systemctl enable NetworkManager
+
+exit
+
 EOF
 
 # last steps
-exit
 umount -a
