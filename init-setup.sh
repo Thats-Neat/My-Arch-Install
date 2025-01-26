@@ -5,7 +5,7 @@ loadkeys us
 timedatectl set-timezone America/Los_Angeles
 
 # partitions
-echo -e "g\nn\n\n\n+4G\nn\n\n\n+8G\nn\n\n\n\nt\n2\n19\nt\n3\n23\nt\n1\n1\nw\n" | fdisk /dev/sda
+printf "g\nn\n\n\n+4G\nn\n\n\n+8G\nn\n\n\n\nt\n2\n19\nt\n3\n23\nt\n1\n1\nw\n" | fdisk /dev/sda
 
 # formatting new partitions
 mkfs.ext4 /dev/sda3
