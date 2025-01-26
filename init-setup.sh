@@ -18,7 +18,7 @@ mount --mkdir /dev/sda1 /mnt/boot/efi
 swapon /dev/sda2
 
 # installing needed packages
-pacstrap -i /mnt base
+pacstrap -i --noconfirm /mnt base
 
 # generating ftab
 genfstab -U -p /mnt >>/mnt/etc/fstab
