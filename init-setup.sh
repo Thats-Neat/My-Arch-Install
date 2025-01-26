@@ -24,8 +24,7 @@ pacstrap -i /mnt base
 genfstab -U -p /mnt >>/mnt/etc/fstab
 
 # switch to chroot
-arch-chroot /mnt
-
+arch-chroot /mnt /bin/bash <<EOF
 # creating new users
 passwd
 useradd -m -g users -G wheel johnathon
@@ -57,6 +56,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # start networkmanager
 systemctl enable NetworkManager
+EOF
 
 # last steps
 exit
