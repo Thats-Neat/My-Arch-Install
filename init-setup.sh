@@ -25,11 +25,6 @@ genfstab -U -p /mnt >>/mnt/etc/fstab
 
 # switch to chroot
 arch-chroot /mnt /bin/bash <<EOF
-# creating new users
-passwd
-useradd -m -g users -G wheel johnathon
-passwd johnathon
-
 # setting time
 ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 hwclock --systohc
@@ -57,9 +52,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # start networkmanager
 systemctl enable NetworkManager
 
-exit
-
+# creating new users
+# passwd
+# useradd -m -g users -G wheel johnathon
+# passwd johnathon
 EOF
 
-# last steps
-umount -a
+# umount -a
