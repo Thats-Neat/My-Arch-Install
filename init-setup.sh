@@ -38,20 +38,20 @@ genfstab -U -p /mnt >>/mnt/etc/fstab
 echo "Configuring System..."
 arch-chroot /mnt /bin/bash <<EOF
   # setting time
-  ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime &> /dev/null
-  hwclock --systohc &> /dev/null
+  ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime &>/dev/null
+  hwclock --systohc &>/dev/null
 
   # setting locale
-  echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-  locale-gen &> /dev/null
+  echo "en_US.UTF-8 UTF-8" >/etc/locale.gen
+  locale-gen
 
-  echo "LANG=en_US.UTF-8" > /etc/locale.conf
-  echo "KEYMAP=us" > /etc/vconsole.conf
+  echo "LANG=en_US.UTF-8" >/etc/locale.conf
+  echo "KEYMAP=us" >/etc/vconsole.conf
 
   # package install
   pacman -S --noconfirm neovim hyprland base-devel grub networkmanager sudo man linux linux-headers linux-firmware
 
   # grub install
-  grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck &> /dev/null
-  grub-mkconfig -o /boot/grub/grub.cfg &> /dev/null
+  grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck &>/dev/null
+  grub-mkconfig -o /boot/grub/grub.cfg &>/dev/null
 EOF
