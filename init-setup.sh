@@ -27,11 +27,11 @@ mount /dev/sda3 /mnt
 mount --mkdir /dev/sda1 /mnt/boot/efi
 
 # installing needed packages
-echo "Installing Base Packages" &>/dev/null
+echo "Installing Base Packages..." &>/dev/null
 pacstrap -i /mnt base
 
 # generating ftab
-echo "Generating fstab"
+echo "Generating fstab..."
 genfstab -U -p /mnt >>/mnt/etc/fstab
 
 # system configure
