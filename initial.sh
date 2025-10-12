@@ -16,7 +16,7 @@ loadkeys us > /dev/null
 parted -s $STORAGE_DEVICE mklabel gpt > /dev/null
 
 # EFI System Partition
-parted -s $STORAGE_DEVICE mkpart ESP fat32 1MiB $EFI_SIZE > /dev/null
+parted -s $STORAGE_DEVICE mkpart ESP fat32 1MiB ${EFI_SIZE}G > /dev/null
 parted -s $STORAGE_DEVICE set 1 boot on > /dev/null
 mkfs.fat -F32 ${STORAGE_DEVICE}1 > /dev/null
 
