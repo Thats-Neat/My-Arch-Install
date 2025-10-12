@@ -23,7 +23,7 @@ parted -s $STORAGE_DEVICE set 1 boot on > /dev/null
 mkfs.fat -F32 ${STORAGE_DEVICE}1 > /dev/null
 
 # Swap Partition
-TOTAL_SIZE=$((EFI_SIZE + SWAP_SIZE)) &> /dev/null
+TOTAL_SIZE=$((EFI_SIZE + SWAP_SIZE)) > /dev/null
 parted -s $STORAGE_DEVICE mkpart primary linux-swap ${EFI_SIZE}G ${TOTAL_SIZE}G > /dev/null
 mkswap ${STORAGE_DEVICE}2 > /dev/null
 swapon ${STORAGE_DEVICE}2 > /dev/null
@@ -43,8 +43,8 @@ genfstab -U /mnt >> /mnt/etc/fstab > /dev/null
 
 arch-chroot /mnt
 
-ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
-hwclock --systohc
+ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime > /dev/null
+hwclock --systohc > /dev/null
 
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 locale-gen > /etc/locale.gen
